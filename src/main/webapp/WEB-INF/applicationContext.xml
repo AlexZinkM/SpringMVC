@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 
-       xmlns:context="http://www.springframework.org/schema/context"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+         id="WebApp_ID" version="3.1">
 
-       xsi:schemaLocation="
+    <display-name>spring-cource-mvc</display-name>
 
-http://www.springframework.org/schema/beans
+    <absolute-ordering />
 
-http://www.springframework.org/schema/beans/spring-beans.xsd
+    <servlet>
 
-http://www.springframework.org/schema/context
+        <servlet-name>dispatcher</servlet-name>
 
-http://www.springframework.org/schema/context/spring-context.xsd
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 
-http://www.springframework.org/schema/mvc
+        <init-param>
 
-http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+            <param-name>contextConfigLocation</param-name>
 
-    <context:component-scan base-package="mvc" />
+            <param-value>/WEB-INF/applicationContext.xml</param-value>
 
-    <mvc:annotation-driven/>
+        </init-param>
 
-    <bean
+        <load-on-startup>1</load-on-startup>
 
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    </servlet>
 
-        <property name="prefix" value="WEB-INF/view/" />
+    <servlet-mapping>
 
-        <property name="suffix" value=".jsp" />
+        <servlet-name>dispatcher</servlet-name>
 
-    </bean>
+        <url-pattern>/</url-pattern>
 
-</beans>
+    </servlet-mapping>
+
+</web-app>
